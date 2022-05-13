@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">Hearch</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Appreciate</string>
+    <string name="title_notifications">Settings</string>
+    <string name="tools">Tools</string>
+    <string name="insight">Insights</string>
+    <string name="lock">Lock</string>
+    <string name="favourites">Favourites</string>
+    <string name="explorer">Explorer</string>
+    <string name="insight_app_usages">App Usages</string>
+    <string name="insight_app_usages_msg">Your app usages is up 100% in last 30 days. To know how to reduce usages, please click</string>
+    <string name="insight_app_msg">Hello new insights are here. Insights may help in reducing mobile usage and increase  productivity</string>
+    <string name="emi">EMI Calculator</string>
+    <string name="emimessage">Calculate monthly emi\'s</string>
+    <string name="bmi">BMI Calculator</string>
+    <string name="bmimessage">Calculate body mass index</string>
+    <string name="sip">SIP Calculator</string>
+    <string name="sipmessage">Experience the magic of compounding</string>
+    <string name="retirement">"Plan for future uncertainty "</string>
+    <string name="retire">Retirement Calculator</string>
+    <string name="calculators">Calculators</string>
+    <string name="memory">Phone Cleaner</string>
+    <string name="memorycleanemessage">Clean system memory for better system performance</string>
+    <string name="filesharemsg">Share files in a blink</string>
+    <string name="fileshare">Transfer Files</string>
+    <string name="emi_calculator">Personal loan Calculator</string>
+    <string name="principal_amount">Loan Amount</string>
+    <string name="rate_of_interest">Rate of Interest</string>
+    <string name="tenure">Tenure</string>
+    <string name="year">Years</string>
+    <string name="month">Months</string>
+    <string name="monthly_emi">Monthly EMI</string>
+    <string name="years">Years</string>
+    <string name="months">Months</string>
+</resources>

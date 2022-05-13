@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+       <variable
+           name="loanAmount"
+           type="Double" />
+        <variable
+            name="loanRateOfInterest"
+            type="Double" />
+        <variable
+            name="tenureMonths"
+            type="Long" />
+        <variable
+        name="preProcessingFeeRate"
+        type="Double" />
+        <variable
+            name="emiAmount"
+            type="Double" />
+        <variable
+            name="emiAmountAvailable"
+            type="Boolean" />
+
+
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".ui.notifications.EmiFragment">
+
+
+    <TextView
+        android:id="@+id/emiCalculator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/emi_calculator"
+        android:textSize="16sp"
+        android:layout_marginStart="10dp"
+        android:textStyle="bold"
+app:layout_constraintTop_toTopOf="parent"        />
+
+    <TextView
+        android:id="@+id/principalAmountLabel"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="@string/principal_amount"
+        android:textSize="14sp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/emiCalculator"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+    <EditText
+        android:id="@+id/principalAmount"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_marginStart="10dp"
+        android:hint="Loan Amount"
+        android:inputType="number"
+      app:layout_constraintTop_toBottomOf="@id/emiCalculator"
+        app:layout_constraintLeft_toRightOf="@id/principalAmountLabel"
+         />
+<!--    <com.google.android.material.slider.Slider
+        android:id="@+id/amountSlider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/principalAmountLabel"
+        app:layout_constraintLeft_toLeftOf="@id/principalAmountLabel"
+        android:value="100000"
+        android:valueFrom="0"
+        android:valueTo="3000000"
+        android:stepSize="50000">
+
+    </com.google.android.material.slider.Slider> -->
+    <TextView
+        android:id="@+id/rateOfInterestLabel"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="@string/rate_of_interest"
+        android:textSize="14sp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/principalAmount"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+    <EditText
+        android:id="@+id/rateOfInterest"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_marginStart="10dp"
+        android:hint="@string/rate_of_interest"
+        android:inputType="number"
+        app:layout_constraintTop_toBottomOf="@id/principalAmount"
+        app:layout_constraintLeft_toRightOf="@id/rateOfInterestLabel"
+       />
+
+    <TextView
+        android:id="@+id/tenureLabel"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="@string/tenure"
+        android:textSize="14sp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/rateOfInterest"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <EditText
+        android:id="@+id/tenureYear"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_marginStart="10dp"
+        android:hint="@string/years"
+        android:inputType="number"
+        app:layout_constraintTop_toBottomOf="@id/rateOfInterest"
+        app:layout_constraintLeft_toRightOf="@id/tenureLabel"
+        />
+
+
+
+    <EditText
+        android:id="@+id/tenuremonth"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_marginStart="10dp"
+        android:inputType="number"
+        android:hint="@string/months"
+        app:layout_constraintTop_toBottomOf="@id/rateOfInterest"
+        app:layout_constraintLeft_toRightOf="@id/tenureYear"
+        />
+
+    <TextView
+        android:id="@+id/emimessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/monthly_emi"
+        android:layout_margin="10dp"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/tenureLabel"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$ 10000"
+        android:visibility="invisible"
+        android:layout_margin="10dp"
+        android:textSize="18sp"
+        android:textColor="#1FBFBE"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/tenureLabel"
+        app:layout_constraintLeft_toRightOf="@id/emimessage"
+
+        >
+    </TextView>
+
+
+    <com.github.mikephil.charting.charts.PieChart
+        android:id="@+id/pieChart"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        app:layout_constraintTop_toBottomOf="@id/emimessage"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+>
+
+    </com.github.mikephil.charting.charts.PieChart>
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
