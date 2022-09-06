@@ -8,6 +8,8 @@
     android:layout_height="140dp"
     android:layout_margin="7dp"
     app:cardElevation="6dp"
+    android:focusable="true"
+    android:clickable="true"
     app:cardPreventCornerOverlap="false"
 
 

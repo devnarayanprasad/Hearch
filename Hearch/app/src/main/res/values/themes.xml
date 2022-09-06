@@ -29,20 +29,4 @@
     </style>
 
 
-    <style name="bigcards" parent="@style/Widget.MaterialComponents.CardView">
-        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.MaterialCardView.BigCards</item>
-    </style>
-
-
-    <style name="ShapeAppearanceOverlay.MaterialCardView.BigCards" parent="">
-        <item name="cornerFamily">rounded</item>
-        <item name="cornerSizeTopRight">15dp</item>
-        <item name="cornerSizeTopLeft">15dp</item>
-        <item name="cornerSizeBottomRight">15dp</item>
-        <item name="cornerSizeBottomLeft">15dp</item>
-
-
-    </style>
-
-
 </resources>

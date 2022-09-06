@@ -12,8 +12,10 @@
         <entry key="app/src/main/res/drawable/ic_baseline_construction_24.xml" value="0.25416666666666665" />
         <entry key="app/src/main/res/drawable/ic_baseline_data_usage_24.xml" value="0.21574074074074073" />
         <entry key="app/src/main/res/drawable/ic_baseline_favorite_border_24.xml" value="0.21203703703703702" />
+        <entry key="app/src/main/res/drawable/ic_baseline_incomplete_circle_24.xml" value="0.107" />
         <entry key="app/src/main/res/drawable/ic_baseline_insights_24.xml" value="0.21574074074074073" />
         <entry key="app/src/main/res/drawable/ic_baseline_monitor_heart_24.xml" value="0.21203703703703702" />
+        <entry key="app/src/main/res/drawable/ic_baseline_poll_24.xml" value="0.107" />
         <entry key="app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.1765625" />
         <entry key="app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.1765625" />
         <entry key="app/src/main/res/drawable/ic_illustrationinsight.xml" value="0.2324074074074074" />
@@ -38,12 +40,16 @@
         <entry key="app/src/main/res/layout/cards.xml" value="0.335" />
         <entry key="app/src/main/res/layout/emi.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fileshare.xml" value="0.11145833333333334" />
+        <entry key="app/src/main/res/layout/fragment_bmi.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.12006079027355623" />
-        <entry key="app/src/main/res/layout/fragment_emi.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_emi.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_notifications.xml" value="0.12006079027355623" />
+        <entry key="app/src/main/res/layout/fragment_retirement.xml" value="0.17346014492753623" />
+        <entry key="app/src/main/res/layout/fragment_sip.xml" value="0.25" />
         <entry key="app/src/main/res/layout/insight-bigcard.xml" value="0.16394927536231885" />
         <entry key="app/src/main/res/layout/insight.xml" value="0.18840579710144928" />
+        <entry key="app/src/main/res/layout/insight_bigcard.xml" value="0.1" />
         <entry key="app/src/main/res/layout/lock.xml" value="0.18840579710144928" />
         <entry key="app/src/main/res/layout/memoryclean.xml" value="0.1585144927536232" />
         <entry key="app/src/main/res/layout/retire.xml" value="0.1585144927536232" />

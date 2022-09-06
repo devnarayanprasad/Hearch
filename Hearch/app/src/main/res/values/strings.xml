@@ -6,7 +6,6 @@
     <string name="tools">Tools</string>
     <string name="insight">Insights</string>
     <string name="lock">Lock</string>
-    <string name="favourites">Favourites</string>
     <string name="explorer">Explorer</string>
     <string name="insight_app_usages">App Usages</string>
     <string name="insight_app_usages_msg">Your app usages is up 100% in last 30 days. To know how to reduce usages, please click</string>
@@ -20,17 +19,24 @@
     <string name="retirement">"Plan for future uncertainty "</string>
     <string name="retire">Retirement Calculator</string>
     <string name="calculators">Calculators</string>
-    <string name="memory">Phone Cleaner</string>
-    <string name="memorycleanemessage">Clean system memory for better system performance</string>
-    <string name="filesharemsg">Share files in a blink</string>
-    <string name="fileshare">Transfer Files</string>
     <string name="emi_calculator">Personal loan Calculator</string>
     <string name="principal_amount">Loan Amount</string>
     <string name="rate_of_interest">Rate of Interest</string>
-    <string name="tenure">Tenure</string>
-    <string name="year">Years</string>
-    <string name="month">Months</string>
+    <string name="tenure">Tenure Months</string>
     <string name="monthly_emi">Monthly EMI</string>
-    <string name="years">Years</string>
+    <string name="years">Tenure Years</string>
     <string name="months">Months</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="bmi_calculator">BMI Calculator</string>
+    <string name="age">Age</string>
+    <string name="height">Height</string>
+    <string name="weight">Weight</string>
+    <string name="power_of_compounding">Power Of Compounding</string>
+    <string name="initial_amount">Initial Amount</string>
+    <string name="monthly_investments">Monthly Amount</string>
+    <string name="compounded_amount">Compounded Amount</string>
+    <string name="age_now">Age Now</string>
+    <string name="retirement_calculator">Retirement Calculator</string>
+    <string name="life_expectancy">Life Expectancy</string>
+    <string name="monthly_contribution">Monthly Contribution</string>
 </resources>

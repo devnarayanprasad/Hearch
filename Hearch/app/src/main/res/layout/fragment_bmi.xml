@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="bmi"
+            type="com.example.myapplication.ui.bmi.BmiViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".bmi">
+
+        <TextView
+            android:id="@+id/bmiCalculator"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/bmi_calculator"
+            android:layout_marginStart="10dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toRightOf="parent" />
+
+        <TextView
+            android:id="@+id/ageLabel"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/age"
+            android:textSize="20sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bmiCalculator" />
+
+        <EditText
+            android:id="@+id/age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:ems="10"
+            android:hint="Age"
+            android:inputType="numberDecimal"
+            android:minHeight="48dp"
+            android:text="@={``+bmi.bmi.age}"
+            android:textAlignment="gravity"
+            app:layout_constraintLeft_toRightOf="@id/ageLabel"
+            app:layout_constraintTop_toBottomOf="@id/bmiCalculator" />
+
+        <TextView
+            android:id="@+id/genderLabel"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="15dp"
+            android:text="Gender"
+            android:textSize="20sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/age" />
+        <RadioGroup
+            android:id="@+id/genderGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="80dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            app:layout_constraintLeft_toRightOf="@id/genderLabel"
+            app:layout_constraintTop_toBottomOf="@id/age">
+
+            <RadioButton
+                android:id="@+id/maleButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Male"
+                app:layout_constraintLeft_toRightOf="@id/genderLabel"
+                app:layout_constraintTop_toBottomOf="@id/age" />
+
+            <RadioButton
+                android:id="@+id/femaleButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Female"
+                app:layout_constraintLeft_toRightOf="@id/genderLabel"
+                app:layout_constraintTop_toBottomOf="@id/age" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/heightLabel"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/height"
+            android:textSize="20sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/genderGroup" />
+
+        <EditText
+            android:id="@+id/height"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:ems="10"
+            android:hint="Height in cm"
+            android:inputType="numberDecimal"
+            android:minHeight="48dp"
+            android:text="@={``+bmi.bmi.height}"
+            android:textAlignment="gravity"
+            app:layout_constraintLeft_toRightOf="@id/heightLabel"
+            app:layout_constraintTop_toBottomOf="@id/genderGroup" />
+
+        <TextView
+            android:id="@+id/weightLabel"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/weight"
+            android:textSize="20sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/height" />
+
+        <EditText
+            android:id="@+id/weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:ems="10"
+            android:hint="Weight in kg"
+            android:inputType="numberDecimal"
+            android:minHeight="48dp"
+            android:text="@={``+bmi.bmi.weight}"
+            android:textAlignment="gravity"
+            app:layout_constraintLeft_toRightOf="@id/weightLabel"
+            app:layout_constraintTop_toBottomOf="@id/height" />
+
+
+        <Button
+            android:id="@+id/calculateBMI"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Calculate"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/weight">
+
+        </Button>
+
+
+        <TextView
+            android:id="@+id/bmimessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="BMI"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/calculateBMI" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@={``+bmi.bmi.bmi}"
+            android:layout_margin="10dp"
+            android:textSize="18sp"
+            android:textColor="#1FBFBE"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/calculateBMI"
+            app:layout_constraintLeft_toRightOf="@id/bmimessage"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

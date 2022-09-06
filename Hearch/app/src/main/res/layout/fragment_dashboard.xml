@@ -62,7 +62,7 @@
 
             />
     </LinearLayout>
-    <TextView
+   <!-- <TextView
         android:id="@+id/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -95,5 +95,5 @@
             layout="@layout/fileshare"
 
             />
-    </LinearLayout>
+    </LinearLayout>-->
 </androidx.constraintlayout.widget.ConstraintLayout>
