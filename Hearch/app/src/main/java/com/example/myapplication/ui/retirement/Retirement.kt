@@ -1,20 +1,16 @@
 package com.example.myapplication.ui.retirement
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.activityViewModels
-import com.example.myapplication.databinding.FragmentBmiBinding
 import com.example.myapplication.databinding.FragmentRetirementBinding
-import com.example.myapplication.ui.bmi.BmiViewModel
-import com.example.myapplication.ui.retirement.RetirementViewModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+
 
 /**
  * A simple [Fragment] subclass.
@@ -47,10 +43,15 @@ class retirement : Fragment() {
         binding.calculateButton.setOnClickListener {
             run {
                 retirementViewModel.calculateRetirement()
+                hideKeyboard()
 
             }
         }
         return root
+    }
+    fun Fragment.hideKeyboard() {
+        val imm = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(requireView().windowToken, 0)
     }
 
 

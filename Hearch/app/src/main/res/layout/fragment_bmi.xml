@@ -6,11 +6,20 @@
         <variable
             name="bmi"
             type="com.example.myapplication.ui.bmi.BmiViewModel" />
-    </data>
+        <import type="com.example.myapplication.ui.utils.Converter"/>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    </data>
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:paddingLeft="10dp"
+        android:background="#F1FDFF"
         tools:context=".bmi">
 
         <TextView
@@ -20,6 +29,7 @@
             android:text="@string/bmi_calculator"
             android:layout_marginStart="10dp"
             android:textSize="20sp"
+            android:paddingTop="15sp"
             android:textStyle="bold"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toRightOf="parent" />
@@ -30,61 +40,41 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="15dp"
-            android:text="@string/age"
+            android:text="Unit"
             android:textSize="20sp"
+            android:paddingTop="15sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/bmiCalculator" />
 
-        <EditText
-            android:id="@+id/age"
+
+
+        <RadioGroup android:id="@+id/measurementGroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="6dp"
-            android:ems="10"
-            android:hint="Age"
-            android:inputType="numberDecimal"
-            android:minHeight="48dp"
-            android:text="@={``+bmi.bmi.age}"
-            android:textAlignment="gravity"
-            app:layout_constraintLeft_toRightOf="@id/ageLabel"
-            app:layout_constraintTop_toBottomOf="@id/bmiCalculator" />
-
-        <TextView
-            android:id="@+id/genderLabel"
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="15dp"
-            android:text="Gender"
-            android:textSize="20sp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/age" />
-        <RadioGroup
-            android:id="@+id/genderGroup"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="80dp"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal"
-            app:layout_constraintLeft_toRightOf="@id/genderLabel"
-            app:layout_constraintTop_toBottomOf="@id/age">
+            android:layout_marginLeft="70dp"
+            android:paddingTop="12sp"
+            app:layout_constraintTop_toBottomOf="@id/bmiCalculator"
+            app:layout_constraintStart_toStartOf="@id/ageLabel"
+            android:orientation="horizontal">
 
             <RadioButton
-                android:id="@+id/maleButton"
+                android:id="@+id/metricMeasurement"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Male"
-                app:layout_constraintLeft_toRightOf="@id/genderLabel"
-                app:layout_constraintTop_toBottomOf="@id/age" />
-
+                android:text="Metric Units"
+                android:checked="@={bmi.bmi.isMetric}"
+                />
             <RadioButton
-                android:id="@+id/femaleButton"
+                android:id="@+id/usMeasurement"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Female"
-                app:layout_constraintLeft_toRightOf="@id/genderLabel"
-                app:layout_constraintTop_toBottomOf="@id/age" />
+                android:checked="@={!bmi.bmi.isMetric}"
+                android:text="US Units"
+
+                />
         </RadioGroup>
+
+        <!--Metric measurements-->
 
         <TextView
             android:id="@+id/heightLabel"
@@ -92,10 +82,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="15dp"
+            android:visibility="@{bmi.bmi.isMetric?0:-1}"
             android:text="@string/height"
             android:textSize="20sp"
+            android:paddingTop="12sp"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/genderGroup" />
+            app:layout_constraintTop_toBottomOf="@id/measurementGroup" />
 
         <EditText
             android:id="@+id/height"
@@ -106,10 +98,12 @@
             android:hint="Height in cm"
             android:inputType="numberDecimal"
             android:minHeight="48dp"
-            android:text="@={``+bmi.bmi.height}"
+            android:paddingTop="25sp"
+            android:text="@={Converter.doubleToString(bmi.bmi.height)}"
             android:textAlignment="gravity"
+            android:visibility="@{bmi.bmi.isMetric?0:-1}"
             app:layout_constraintLeft_toRightOf="@id/heightLabel"
-            app:layout_constraintTop_toBottomOf="@id/genderGroup" />
+            app:layout_constraintTop_toBottomOf="@id/measurementGroup" />
 
         <TextView
             android:id="@+id/weightLabel"
@@ -117,8 +111,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="15dp"
+            android:visibility="@{bmi.bmi.isMetric?0:-1}"
             android:text="@string/weight"
             android:textSize="20sp"
+            android:paddingTop="15sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/height" />
 
@@ -129,48 +125,147 @@
             android:layout_marginLeft="6dp"
             android:ems="10"
             android:hint="Weight in kg"
+            android:visibility="@{bmi.bmi.isMetric?0:-1}"
             android:inputType="numberDecimal"
             android:minHeight="48dp"
-            android:text="@={``+bmi.bmi.weight}"
+            android:paddingTop="25sp"
+            android:text="@={Converter.doubleToString(bmi.bmi.weight)}"
             android:textAlignment="gravity"
             app:layout_constraintLeft_toRightOf="@id/weightLabel"
             app:layout_constraintTop_toBottomOf="@id/height" />
+
+        <!--US measurements-->
+
+        <TextView
+            android:id="@+id/heightLabelFeetUS"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="15dp"
+            android:visibility="@{bmi.bmi.isMetric?-1:0}"
+            android:text="@string/height"
+            android:textSize="20sp"
+            android:paddingTop="15sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/measurementGroup" />
+
+        <Spinner
+            android:id="@+id/spinnerFeet"
+            android:layout_width="100dp"
+            android:paddingTop="25sp"
+            android:spinnerMode="dialog"
+            android:layout_height="wrap_content"
+            style="@style/Widget.AppCompat.Spinner.Underlined"
+            android:visibility="@{bmi.bmi.isMetric?-1:0}"
+            app:layout_constraintLeft_toRightOf="@id/heightLabelFeetUS"
+            app:layout_constraintTop_toBottomOf="@id/measurementGroup" />
+        <Spinner
+            android:id="@+id/spinnerInch"
+            android:layout_width="100dp"
+            android:paddingTop="25sp"
+            android:spinnerMode="dialog"
+            style="@style/Widget.AppCompat.Spinner.Underlined"
+            android:layout_height="wrap_content"
+            android:visibility="@{bmi.bmi.isMetric?-1:0}"
+            app:layout_constraintLeft_toRightOf="@id/spinnerFeet"
+            app:layout_constraintTop_toBottomOf="@id/measurementGroup" />
+
+        <TextView
+            android:id="@+id/weightFeetLabelUS"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="15dp"
+            android:visibility="@{bmi.bmi.isMetric?-1:0}"
+            android:text="@string/weight"
+            android:textSize="20sp"
+            android:paddingTop="15sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/heightLabelFeetUS" />
+
+        <EditText
+            android:id="@+id/weightPound"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:ems="10"
+            android:hint="Weight in pound"
+            android:visibility="@{bmi.bmi.isMetric?-1:0}"
+            android:inputType="numberDecimal"
+            android:minHeight="48dp"
+            android:paddingTop="25sp"
+            android:text="@={Converter.longToString(bmi.bmi.weightUS)}"
+            android:textAlignment="gravity"
+            app:layout_constraintLeft_toRightOf="@id/weightFeetLabelUS"
+            app:layout_constraintTop_toBottomOf="@id/heightLabelFeetUS" />
+
 
 
         <Button
             android:id="@+id/calculateBMI"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Calculate"
+            android:text="@string/calculate"
+            android:layout_marginTop="15dp"
+            android:paddingTop="15sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/weight">
+            app:layout_constraintTop_toBottomOf="@id/weightPound">
 
         </Button>
 
 
         <TextView
-            android:id="@+id/bmimessage"
+            android:id="@+id/bmiMessage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
             android:text="BMI"
+            android:layout_marginLeft="15sp"
+            android:visibility="@{bmi.bmi.bmi>0.0? 0 :  -1}"
             android:textSize="18sp"
+            android:paddingTop="15sp"
             android:textStyle="bold"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="@id/calculateBMI"
             app:layout_constraintTop_toBottomOf="@id/calculateBMI" />
         <TextView
+            android:id="@+id/bmiNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@={``+bmi.bmi.bmi}"
-            android:layout_margin="10dp"
             android:textSize="18sp"
-            android:textColor="#1FBFBE"
+            android:layout_marginLeft="10sp"
+            android:textColor="@{bmi.bmi.color}"
+            android:visibility="@{bmi.bmi.bmi>0.0? 0 :  -1}"
             android:textStyle="bold"
+            android:paddingTop="15sp"
             app:layout_constraintTop_toBottomOf="@id/calculateBMI"
-            app:layout_constraintLeft_toRightOf="@id/bmimessage"/>
-
+            app:layout_constraintLeft_toRightOf="@id/bmiMessage"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@={bmi.bmi.category}"
+            android:textSize="18sp"
+            android:textColor="@{bmi.bmi.color}"
+            android:visibility="@{bmi.bmi.bmi>0.0? 0 :  -1}"
+            android:layout_marginLeft="10sp"
+            android:textStyle="bold"
+            android:paddingTop="15sp"
+            app:layout_constraintTop_toBottomOf="@id/calculateBMI"
+            app:layout_constraintLeft_toRightOf="@id/bmiNumber"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/bmiChart"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="15dp"
+            android:visibility="@{bmi.bmi.bmi>0.0? 0 :  -1}"
+            app:layout_constraintTop_toBottomOf="@id/bmiMessage"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            >
+
+        </com.github.mikephil.charting.charts.PieChart>
+    </LinearLayout>
 </layout>

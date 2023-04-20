@@ -7,6 +7,7 @@ data class EMI(var loanAmount :Double,
                var loanRateOfInterest:Double,
                var tenureMonths:Long,
                var preProcessingFeeRate:Double,
-               var emiAmount: ObservableDouble,
-               var interestComponent:Double
+               var emiAmount: ObservableLong,
+               var interestComponent:Double,
+               var totalAmount:ObservableLong
 )

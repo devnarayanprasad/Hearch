@@ -7,14 +7,21 @@
            name="emi"
            type="com.example.myapplication.ui.emi.EmiViewModel"
            />
+        <import type="com.example.myapplication.ui.utils.Converter"/>
 
 
 
     </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-
+    android:layout_height="wrap_content"
+    android:background="#F1FDFF"
+    android:layout_margin="10dp"
+    android:padding="10dp"
     tools:context=".ui.emi.EmiFragment">
 
 
@@ -47,7 +54,7 @@ app:layout_constraintTop_toTopOf="parent"        />
         android:hint="Loan Amount"
         android:inputType="numberDecimal"
         android:minHeight="48dp"
-        android:text="@={``+emi.emi.loanAmount}"
+        android:text="@={Converter.doubleToString(emi.emi.loanAmount)}"
         android:textAlignment="gravity"
         app:layout_constraintLeft_toRightOf="@id/principalAmountLabel"
         app:layout_constraintTop_toBottomOf="@id/emiCalculator" />
@@ -72,7 +79,7 @@ app:layout_constraintTop_toTopOf="parent"        />
         android:inputType="numberDecimal"
         android:minHeight="48dp"
         android:gravity="left"
-        android:text="@={``+emi.emi.loanRateOfInterest}"
+        android:text="@={Converter.doubleToString(emi.emi.loanRateOfInterest)}"
         app:layout_constraintLeft_toRightOf="@id/rateOfInterestLabel"
         app:layout_constraintTop_toBottomOf="@id/principalAmount" />
 
@@ -96,7 +103,7 @@ app:layout_constraintTop_toTopOf="parent"        />
         android:hint="@string/months"
         android:inputType="number"
         android:minHeight="48dp"
-        android:text="@={``+emi.emi.tenureMonths}"
+        android:text="@={Converter.longToString(emi.emi.tenureMonths)}"
         app:layout_constraintLeft_toRightOf="@id/tenureLabel"
         app:layout_constraintTop_toBottomOf="@id/rateOfInterest" />
 
@@ -119,34 +126,66 @@ app:layout_constraintTop_toTopOf="parent"        />
         android:text="@string/monthly_emi"
         android:textSize="18sp"
         android:textStyle="bold"
+        android:visibility="@{emi.emi.emiAmount>0? 0 :  -1}"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/calculateButton" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@={``+emi.emi.emiAmount}"
+        android:text="@={Converter.longToString(emi.emi.emiAmount)}"
         android:layout_margin="10dp"
         android:textSize="18sp"
         android:textColor="#1FBFBE"
         android:textStyle="bold"
+        android:visibility="@{emi.emi.emiAmount>0? 0 :  -1}"
         app:layout_constraintTop_toBottomOf="@id/calculateButton"
         app:layout_constraintLeft_toRightOf="@id/emimessage"
 
         >
     </TextView>
+    <TextView
+        android:id="@+id/totalPayment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Total Payment"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:visibility="@{emi.emi.emiAmount>0? 0 :  -1}"
+        app:layout_constraintTop_toBottomOf="@id/emimessage"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@={Converter.longToString(emi.emi.totalAmount)}"
+        android:layout_margin="10dp"
+        android:textSize="18sp"
+        android:textColor="#1FBFBE"
+        android:textStyle="bold"
+        android:visibility="@{emi.emi.emiAmount>0? 0 :  -1}"
+        app:layout_constraintTop_toBottomOf="@id/emimessage"
+        app:layout_constraintLeft_toRightOf="@id/totalPayment"
+
+        >
+    </TextView>
 
 
+</androidx.constraintlayout.widget.ConstraintLayout>
     <com.github.mikephil.charting.charts.PieChart
         android:id="@+id/pieChart"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:visibility="@{emi.emi.emiAmount>0.0? 0 :  -1}"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="15dp"
+        android:visibility="@{emi.emi.emiAmount>0? 0 :  -1}"
         app:layout_constraintTop_toBottomOf="@id/emimessage"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
->
+        >
 
     </com.github.mikephil.charting.charts.PieChart>
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
 </layout>

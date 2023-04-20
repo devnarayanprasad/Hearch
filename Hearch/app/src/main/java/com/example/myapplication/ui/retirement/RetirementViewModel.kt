@@ -11,7 +11,7 @@ import java.util.*
 class RetirementViewModel :ViewModel() {
 
     val retire:RETIREMENT=RETIREMENT(0, 0,
-    0, 0.0, 0.0, 0.0,ObservableDouble(0.0)
+    0, 0, 0, 0.0,ObservableDouble(0.0)
     );
 
 
@@ -19,7 +19,7 @@ class RetirementViewModel :ViewModel() {
     {
 (
        retire.sipMonth.set(pmt(BigDecimal(retire.expectedReturn),
-           (retire.lifeExpectancy -retire.retirementAge)*12,
+           (retire.lifeExpectancy.toInt() -retire.retirementAge.toInt())*12,
             BigDecimal(retire.CurrentExpense.toInt()),false).toDouble()))
         
     }

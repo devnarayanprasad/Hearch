@@ -6,12 +6,19 @@
         <variable
             name="sip"
             type="com.example.myapplication.ui.compounding.CompoundingViewModel" />
+        <import type="com.example.myapplication.ui.utils.Converter"/>
 
     </data>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:background="#F1FDFF"
         tools:context=".ui.compounding.sip">
         <TextView
             android:id="@+id/sipCalculator"
@@ -41,9 +48,9 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/initial_amount"
-            android:inputType="numberDecimal"
+            android:inputType="number"
             android:minHeight="48dp"
-            android:text="@={``+sip.compounding.initialAmount}"
+            android:text="@={Converter.longToString(sip.compounding.initialAmount)}"
             android:textAlignment="gravity"
             app:layout_constraintLeft_toRightOf="@id/initialAmountLabel"
             app:layout_constraintTop_toBottomOf="@id/sipCalculator" />
@@ -66,9 +73,9 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/monthly_investments"
-            android:inputType="numberDecimal"
+            android:inputType="number"
             android:minHeight="48dp"
-            android:text="@={``+sip.compounding.monthlyAmount}"
+            android:text="@={Converter.longToString(sip.compounding.monthlyAmount)}"
             android:textAlignment="gravity"
             app:layout_constraintLeft_toRightOf="@id/sipAmountLabel"
             app:layout_constraintTop_toBottomOf="@id/initialAmount" />
@@ -90,9 +97,9 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/rate_of_interest"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:minHeight="48dp"
-            android:text="@={``+sip.compounding.rateOfInterest}"
+            android:text="@={Converter.doubleToString(sip.compounding.rateOfInterest)}"
             app:layout_constraintLeft_toRightOf="@id/rateOfInterestLabel"
             app:layout_constraintTop_toBottomOf="@id/sipAmount" />
 
@@ -100,7 +107,7 @@
             android:id="@+id/tenureLabel"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:text="@string/years"
+            android:text="@string/tenure_years"
             android:textSize="20sp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="15dp"
@@ -113,10 +120,10 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="@string/months"
+            android:hint="@string/years"
             android:inputType="number"
             android:minHeight="48dp"
-            android:text="@={``+sip.compounding.months}"
+            android:text="@={Converter.longToString(sip.compounding.years)}"
             app:layout_constraintLeft_toRightOf="@id/tenureLabel"
             app:layout_constraintTop_toBottomOf="@id/rateOfInterest" />
 
@@ -158,5 +165,22 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+        <!--<com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/pieChart"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="15dp"
+            android:visibility="@{sip.compounding.compoundedAmount>0.0? 0 :  -1}"
+            app:layout_constraintTop_toBottomOf="@id/emimessage"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            />-->
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/lineChart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="40dp"/>
+ </LinearLayout>
 
 </layout>

@@ -24,7 +24,7 @@
     <string name="rate_of_interest">Rate of Interest</string>
     <string name="tenure">Tenure Months</string>
     <string name="monthly_emi">Monthly EMI</string>
-    <string name="years">Tenure Years</string>
+    <string name="tenure_years">Tenure Years</string>
     <string name="months">Months</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="bmi_calculator">BMI Calculator</string>
@@ -39,4 +39,6 @@
     <string name="retirement_calculator">Retirement Calculator</string>
     <string name="life_expectancy">Life Expectancy</string>
     <string name="monthly_contribution">Monthly Contribution</string>
+    <string name="calculate">Calculate</string>
+    <string name="years">Years</string>
 </resources>
